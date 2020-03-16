@@ -1,0 +1,18 @@
+﻿@model IEnumerable<string>
+<h1>@ViewBag.Title</h1>
+    <div class="border">
+        <h2>@ViewBag.User</h2>
+        <div class="border border-dark">
+            <p>@ViewBag.Message</p>
+        </div>
+        <a style="color:blue" asp-controller="Post" asp-action="Likes"  asp-route-id="@ViewBag.id">Likes</a>:@ViewBag.Like
+        <br />
+        <br />
+        @foreach (var c in Model)
+        {
+            <p class="border border-primary">@c</p>
+        }
+    </div>
+    <a class="btn btn-primary" asp-controller="Post" asp-action="AddComment"  asp-route-id="@ViewBag.id">AddComment</a>
+<br>
+

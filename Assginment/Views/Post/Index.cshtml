@@ -1,0 +1,31 @@
+﻿@model PostListViewModel
+
+@if (ViewBag.TempData != null)
+{
+    <script type="text/javascript">
+            window.onload = function () {
+                alert("@ViewBag.TempData");
+            };
+    </script>
+}
+
+<h1>@ViewBag.Title</h1>
+@if (Model.Posts == null)
+{
+    <h1>Empty List</h1>
+}
+else
+{
+    @foreach (var p in Model.Posts)
+    {
+        <div class="border border-dark">
+            <p class="border">UserName : @p.Users</p>
+            <p class="border border-top-0">@p.Message</p>
+            <a style="color:blue" asp-controller="Post" asp-action="Likes" asp-route-id="@p.id">Likes</a>:@p.Like&nbsp;&nbsp;
+            <a class="btn btn-primary" asp-controller="Post" asp-action="CommentList" asp-route-id="@p.id">Comments</a>&nbsp;&nbsp;
+            <a class="btn btn-outline-success" asp-controller="Post" asp-action="Share" asp-route-id="@p.id">Share</a>
+        </div>
+        <br>
+    }
+}
+<a class="btn btn-outline-info" asp-controller="Post" asp-action="AddPost">Add Post</a>
